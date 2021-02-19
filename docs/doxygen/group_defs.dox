@@ -1,0 +1,28 @@
+
+
+/**
+ * @defgroup holoCore       Core Frameworks
+ * @{
+ */
+
+    /**
+    * @defgroup holonomicfrmw      SW Frameworks
+    * @{
+    */
+
+        /**
+        * @defgroup palIno       Arduino
+        * @{
+        */
+        /** @} */
+
+        /**
+        * @defgroup palWiced     WICED
+        * @{
+        */
+        /** @} */
+
+
+/** @} */
+
+

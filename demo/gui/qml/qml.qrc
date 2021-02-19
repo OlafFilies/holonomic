@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>radialSlider.qml</file>
+        <file>linearSlider.qml</file>
+        <file>wl.qml</file>
+        <file>Button.qml</file>
+    </qresource>
+</RCC>

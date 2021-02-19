@@ -1,0 +1,40 @@
+#######################################
+# Syntax Coloring Map For <LIBRARY_NAME>
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Holonomic3 KEYWORD1
+Holonomic3Pal KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin KEYWORD2
+calcSpeedVector KEYWORD2
+coastRama KEYWORD2
+driveRama KEYWORD2
+driveRot KEYWORD2
+driveXY KEYWORD2
+end KEYWORD2
+getSpeed KEYWORD2
+getSpeedFactor KEYWORD2
+getVector KEYWORD2
+stopRama KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+HOLONOMIC_CONF_DFL_HPP_ LITERAL1
+HOLONOMIC_CONF_HPP_ LITERAL1
+HOLONOMIC_CONF_OPTS_HPP_ LITERAL1
+HOLONOMIC_FRAMEWORK LITERAL1
+HOLONOMIC_FRMWK_ARDUINO LITERAL1
+HOLONOMIC_FRMWK_MTB LITERAL1
+HOLONOMIC_FRMWK_PSOCC LITERAL1
+HOLONOMIC_FRMWK_RPI LITERAL1
+HOLONOMIC_FRMWK_WICED LITERAL1
