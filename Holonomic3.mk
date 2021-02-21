@@ -8,8 +8,11 @@
 NAME := Lib_Holonomic3
 GLOBAL_DEFINES   := HOLONOMIC_FRAMEWORK=HOLONOMIC_FRMWK_WICED
 
-GLOBAL_INCLUDES  := src/config \
-					src/framework/wiced-43xxx
+$(NAME)_COMPONENTS := libraries/drivers/motor-control/TLE94112
+
+GLOBAL_INCLUDES  := src/ \
+					src/config \
+					src/framework/wiced-43xxx					
 
 $(NAME)_SOURCES  := src/Holonomic3.cpp
 

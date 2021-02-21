@@ -29,40 +29,67 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <Holonomic3.hpp>
+#include <rama.hpp>
+
+#if (HOLONOMIC_FRAMEWORK == HOLONOMIC_FRMWK_WICED)
 
 Holonomic3 RamaDrive = Holonomic3();
 Holonomic3::velInput_t driveParam = { 0, 0, 0};
 
 void setup() {
-  RamaDrive.begin();
-  RamaDrive.coastRama();
-  delay(500);
-  
-  Serial.begin(38400);
-  while (!Serial) {}
-  delay(500);
+//  RamaDrive.begin();
+//  RamaDrive.coastRama();
+//  delay(500);
+//
+//  Serial.begin(38400);
+//  while (!Serial) {}
+//  delay(500);
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    Serial.readStringUntil('<');
-    driveParam.alpha    = Serial.readStringUntil(',').toInt();
-    driveParam.speed    = Serial.readStringUntil(',').toInt();
-    driveParam.rotation = Serial.readStringUntil('>').toInt();
-    if (driveParam.speed != 0) {
-      RamaDrive.driveXY(driveParam);
-    }else{
-      if (driveParam.rotation == 0) {
-        RamaDrive.coastRama();
-      } else {
-        RamaDrive.driveRot(driveParam);
-      }
-    }
-    Serial.println("Ok");
-    Serial.print("<");Serial.print(driveParam.alpha);
-    Serial.print(",");Serial.print(driveParam.speed);
-    Serial.print(",");Serial.print(driveParam.rotation);
-    Serial.print(">");
-  }
+//  if (Serial.available() > 0) {
+//    Serial.readStringUntil('<');
+//    driveParam.alpha    = Serial.readStringUntil(',').toInt();
+//    driveParam.speed    = Serial.readStringUntil(',').toInt();
+//    driveParam.rotation = Serial.readStringUntil('>').toInt();
+//    if (driveParam.speed != 0) {
+//      RamaDrive.driveXY(driveParam);
+//    }else{
+//      if (driveParam.rotation == 0) {
+//        RamaDrive.coastRama();
+//      } else {
+//        RamaDrive.driveRot(driveParam);
+//      }
+//    }
+//    Serial.println("Ok");
+//    Serial.print("<");Serial.print(driveParam.alpha);
+//    Serial.print(",");Serial.print(driveParam.speed);
+//    Serial.print(",");Serial.print(driveParam.rotation);
+//    Serial.print(">");
+//  }
 }
+
+/******************************************************
+ *               Function Definitions
+ ******************************************************/
+
+void application_start( )
+{
+    wiced_result_t      result;
+
+    /* Initialize the device */
+    result = wiced_init();
+    if (result != WICED_SUCCESS)
+    {
+        return;
+    }
+
+    setup();
+
+    while(1)
+    {
+        loop();
+    }
+}
+
+#endif

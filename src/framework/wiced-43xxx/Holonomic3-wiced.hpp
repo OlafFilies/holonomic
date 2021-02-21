@@ -27,10 +27,12 @@
 #include "config/holonomic-conf.hpp"
 
 #if (HOLONOMIC_FRAMEWORK == HOLONOMIC_FRMWK_WICED)
-#include <TLE94112-wiced.hpp>
-#include <TLE94112Motor-wiced.hpp>
 
-//!< constrain function macro for the core libraray
+#include <math.h>
+#include <TLE94112-platf-wiced.hpp>
+#include <TLE94112Motor-platf-wiced.hpp>
+
+//!< constrain function macro for the core library
 #define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
 
 /**
@@ -39,7 +41,7 @@
  *
  * @brief WiCED Hardware Platform
  *
- * This is a simple wrapper for the wiced framework, which only loads ths
+ * This is a simple wrapper for the wiced framework, which only loads this
  * right header and set the right controller.
 
  */
