@@ -1,0 +1,333 @@
+[
+    {
+        "id": "c71c032.32416",
+        "type": "tab",
+        "label": "Rame Mqtt",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8c62357d.7d1b58",
+        "type": "mqtt out",
+        "z": "c71c032.32416",
+        "name": "",
+        "topic": "",
+        "qos": "0",
+        "retain": "",
+        "broker": "31d89277.4e5156",
+        "x": 1030,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "38c43b6b.df7074",
+        "type": "ui_slider",
+        "z": "c71c032.32416",
+        "name": "",
+        "label": "alpha",
+        "tooltip": "",
+        "group": "90ca185f.fc85e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "robot/alpha",
+        "min": 0,
+        "max": "360",
+        "step": 1,
+        "x": 450,
+        "y": 480,
+        "wires": [
+            [
+                "8c62357d.7d1b58",
+                "35db899.aa403f6"
+            ]
+        ]
+    },
+    {
+        "id": "6126a3fb.b4fd64",
+        "type": "ui_slider",
+        "z": "c71c032.32416",
+        "name": "",
+        "label": "speed",
+        "tooltip": "",
+        "group": "28559b50.50e27c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "robot/speed",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "x": 450,
+        "y": 300,
+        "wires": [
+            [
+                "8c62357d.7d1b58",
+                "415f3209.f7ce9c"
+            ]
+        ]
+    },
+    {
+        "id": "2ade56ab.edf9aa",
+        "type": "ui_slider",
+        "z": "c71c032.32416",
+        "name": "",
+        "label": "rotation",
+        "tooltip": "",
+        "group": "8c94e158.267df",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "robot/rotation",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "x": 460,
+        "y": 660,
+        "wires": [
+            [
+                "8c62357d.7d1b58",
+                "fcf3a4f7.8cb768"
+            ]
+        ]
+    },
+    {
+        "id": "35db899.aa403f6",
+        "type": "ui_gauge",
+        "z": "c71c032.32416",
+        "name": "",
+        "group": "90ca185f.fc85e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "Direction wheel",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "360",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 480,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "415f3209.f7ce9c",
+        "type": "ui_gauge",
+        "z": "c71c032.32416",
+        "name": "",
+        "group": "28559b50.50e27c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Speed wheel",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 470,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "fcf3a4f7.8cb768",
+        "type": "ui_gauge",
+        "z": "c71c032.32416",
+        "name": "",
+        "group": "8c94e158.267df",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Rotation wheel",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 480,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "c1048a1f.ec22d",
+        "type": "ui_button",
+        "z": "c71c032.32416",
+        "name": "",
+        "group": "28559b50.50e27c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 270,
+        "y": 300,
+        "wires": [
+            [
+                "6126a3fb.b4fd64"
+            ]
+        ]
+    },
+    {
+        "id": "f1c96f14.9fed48",
+        "type": "ui_button",
+        "z": "c71c032.32416",
+        "name": "",
+        "group": "90ca185f.fc85e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 270,
+        "y": 480,
+        "wires": [
+            [
+                "38c43b6b.df7074"
+            ]
+        ]
+    },
+    {
+        "id": "cd3f5531.e98b6",
+        "type": "ui_button",
+        "z": "c71c032.32416",
+        "name": "",
+        "group": "8c94e158.267df",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 270,
+        "y": 660,
+        "wires": [
+            [
+                "2ade56ab.edf9aa"
+            ]
+        ]
+    },
+    {
+        "id": "31d89277.4e5156",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "mqtt_sec",
+        "broker": "IPAdresssToYourMQTTBroker",
+        "port": "8883",
+        "tls": "1c7cf823.a1e478",
+        "clientid": "",
+        "usetls": true,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "90ca185f.fc85e",
+        "type": "ui_group",
+        "z": "",
+        "name": "Group 2",
+        "tab": "2344e274.74951e",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "28559b50.50e27c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Group1",
+        "tab": "2344e274.74951e",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "8c94e158.267df",
+        "type": "ui_group",
+        "z": "",
+        "name": "Group 3",
+        "tab": "2344e274.74951e",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "1c7cf823.a1e478",
+        "type": "tls-config",
+        "z": "",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "client.crt",
+        "keyname": "client.key",
+        "caname": "ca.crt",
+        "servername": "",
+        "verifyservercert": false
+    },
+    {
+        "id": "2344e274.74951e",
+        "type": "ui_tab",
+        "name": "Tab 3",
+        "icon": "dashboard",
+        "order": 3
+    }
+]

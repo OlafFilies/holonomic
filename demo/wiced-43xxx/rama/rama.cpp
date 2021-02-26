@@ -33,49 +33,80 @@
 
 #if (HOLONOMIC_FRAMEWORK == HOLONOMIC_FRMWK_WICED)
 
+//!< Max input legth for number of three digits
+#define NAME_LENGTH     3
+
 Holonomic3 RamaDrive = Holonomic3();
-Holonomic3::velInput_t driveParam = { 0, 0, 0};
+Holonomic3::velInput_t driveParam = {0, 0, 0};
 
-void setup() {
-//  RamaDrive.begin();
-//  RamaDrive.coastRama();
-//  delay(500);
-//
-//  Serial.begin(38400);
-//  while (!Serial) {}
-//  delay(500);
+/**
+ * @brief setup function
+ * 
+ */
+void setup()
+{
+    wiced_core_init();
+    /* Remove buffering from all std streams */
+    setvbuf( stdin, NULL, _IONBF, 0 );
+    setvbuf( stdout, NULL, _IONBF, 0 );
+    setvbuf( stderr, NULL, _IONBF, 0 );
+
+    // Enable MotorController on TLE94112 shields and cost all motors
+    WPRINT_APP_INFO(("[TLE94112] : setup begin -> %u\n", 0));
+    RamaDrive.begin();
+    RamaDrive.coastRama();
+    WPRINT_APP_INFO(("[Holonomic drive] : startup begin -> %u\n", 1));
+    WPRINT_APP_INFO(("Insert -> <alpha,speed,rotation>\n"));
 }
 
-void loop() {
-//  if (Serial.available() > 0) {
-//    Serial.readStringUntil('<');
-//    driveParam.alpha    = Serial.readStringUntil(',').toInt();
-//    driveParam.speed    = Serial.readStringUntil(',').toInt();
-//    driveParam.rotation = Serial.readStringUntil('>').toInt();
-//    if (driveParam.speed != 0) {
-//      RamaDrive.driveXY(driveParam);
-//    }else{
-//      if (driveParam.rotation == 0) {
-//        RamaDrive.coastRama();
-//      } else {
-//        RamaDrive.driveRot(driveParam);
-//      }
-//    }
-//    Serial.println("Ok");
-//    Serial.print("<");Serial.print(driveParam.alpha);
-//    Serial.print(",");Serial.print(driveParam.speed);
-//    Serial.print(",");Serial.print(driveParam.rotation);
-//    Serial.print(">");
-//  }
+/**
+ * @brief loop function
+ * 
+ */
+void loop()
+{
+    char ch;
+    int value = 0;
+    int param_index = 0;
+
+    while(1) {
+        ch = getchar();
+        if (ch >= '0' && ch <= '9') {
+            value = 10 * value + (ch - '0');
+        } else if ((ch == ',' || ch == ';' || ch == '>')) {
+            WPRINT_APP_INFO(("value %u; indx %u\n", value,param_index));
+            switch(param_index) {
+                case 0: driveParam.alpha = value;
+                case 1: driveParam.speed = value;
+                case 2: driveParam.rotation = value;
+            }
+            value = 0;
+            param_index++;
+        } else if ((ch == '\n')) {
+            value = 0;
+            param_index = 0;
+
+            if (driveParam.speed != 0) {
+                RamaDrive.driveXY(driveParam);
+            } else {
+                if (driveParam.rotation == 0) {
+                    RamaDrive.coastRama();
+                } else {
+                    RamaDrive.driveRot(driveParam);
+                }
+            }
+            WPRINT_APP_INFO(("OK -> <%u,%u,%u>\n", driveParam.alpha,driveParam.speed,driveParam.rotation));
+        }
+    }
 }
 
-/******************************************************
- *               Function Definitions
- ******************************************************/
-
+/**
+ * @brief main loop function
+ * 
+ */
 void application_start( )
 {
-    wiced_result_t      result;
+    wiced_result_t result;
 
     /* Initialize the device */
     result = wiced_init();
